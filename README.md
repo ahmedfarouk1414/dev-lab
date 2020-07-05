@@ -71,7 +71,7 @@ that will use to build and push image also
   - mysql> ALTER USER 'root'@'localhost' IDENTIFIED BY 'ahmed';
           - create databases toystore
          
-  - cat toystore-test.sql  | docker exec -i mysql /usr/bin/mysql -u root --password=ahmed mysql
+  - cat toystore-test.sql  | docker exec -i mysql /usr/bin/mysql -u root --password=ahmed toystore
   - docker commit mysql 
   - docker tag mysql  ahmedfarouk141414/toystore:v1
   - docker push  ahmedfarouk141414/toystore:v1
