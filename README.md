@@ -25,7 +25,7 @@
   - echo "source <(kubectl completion bash)" >> ~/.bashrc
 
 ## install helm 
- - kubectl apply -f manifest/helm.sh 
+ - sh manifest/helm.sh 
    
 ## install jenkins from helm 
    - kubectl inspect stable/jenkins > /tmp/jenkins-values
