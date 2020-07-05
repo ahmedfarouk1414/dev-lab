@@ -7,5 +7,5 @@ spec:
   - port: 3306
     protocol: TCP
   selector:
-    app: ToyStore-secrets 
+    app: spring-db 
   type: ClusterIp
