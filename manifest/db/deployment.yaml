@@ -25,4 +25,11 @@ spec:
               secretKeyRef:
                 name: toystore-secrets
                 key: db-password
+        volumeMounts:
+        - mountPath: "/var/lib/mysql"
+          name: mysql-storage
+      volumes:
+        - name: mysql-storage
+          persistentVolumeClaim:
+            claimName: my-volume2
 
