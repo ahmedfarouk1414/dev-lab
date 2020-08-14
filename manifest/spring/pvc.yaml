@@ -1,0 +1,12 @@
+# ssd-claim.yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: my-volume3
+spec:
+  storageClassName: faster
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 30Gi
