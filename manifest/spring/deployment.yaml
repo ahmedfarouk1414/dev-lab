@@ -21,31 +21,37 @@ spec:
         env:
         - name: SPRING_PROFILES_ACTIVE
           value: production
+          envFrom:
+          - configMapRef:
+              name: spring-boot-bootstrap
+              #env:
+              # - name: spring.datasource.url
+              #valueFrom:
+              # configMapKeyRef:
+              #  name: spring-boot-bootstrap
+              #  key: spring.datasource.url
 
-        - name: spring.datasource.url
-          valueFrom:
-             configMapKeyRef:
-                name: spring-boot-bootstrap
-                key: spring.datasource.url
-
-        - name: spring.datasource.username
-          valueFrom:
-             configMapKeyRef:
-                name: spring-boot-bootstrap
-                key: spring.datasource.username
-        - name: spring.datasource.password
-          valueFrom:
-             configMapKeyRef:
-                name: spring-boot-bootstrap
-                key: spring.datasource.password
+              #  - name: spring.datasource.username
+              #valueFrom:
+              #configMapKeyRef:
+              #  name: spring-boot-bootstrap
+              #  key: spring.datasource.username
+              #   - name: spring.datasource.password
+              #valueFrom:
+              #configMapKeyRef:
+              #  name: spring-boot-bootstrap
+              #  key: spring.datasource.password
 
         volumeMounts:
-        - mountPath: "/appl"
+        - mountPath: "/app"
           name: spring-storage
       volumes:
         - name: spring-storage
           persistentVolumeClaim:
             claimName: my-volume3
+
+
+
 
 
 
