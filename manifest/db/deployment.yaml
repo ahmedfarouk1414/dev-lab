@@ -1,29 +1,30 @@
 apiVersion: v1
 kind: ReplicationController
 metadata:
-  name: toystore-secrets-db
+  name: wordpress-db
 spec:
   replicas: 1
   selector:
-    app: toystore-secrets-db
+    app: wordpress-db
   template:
     metadata:
-      name: toystore-secrets-db
+      name: wordpress-db
       labels:
-        app: toystore-secrets-db
+        app: wordpress-db
     spec:
       containers:
       - name: mysql
-        image: ahmedfarouk141414/mysql_toy0store:v1
+        image: mysql:5.7
+        args:
+          - "--ignore-db-dir=lost+found"
         ports:
         - name: mysql-port
           containerPort: 3306
-
         env:
           - name: MYSQL_ROOT_PASSWORD
             valueFrom:
               secretKeyRef:
-                name: toystore-secrets
+                name: db-secrets
                 key: db-password
         volumeMounts:
         - mountPath: "/var/lib/mysql"
@@ -32,4 +33,3 @@ spec:
         - name: mysql-storage
           persistentVolumeClaim:
             claimName: my-volume2
-
