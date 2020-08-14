@@ -39,6 +39,13 @@ spec:
                 name: spring-boot-bootstrap
                 key: spring.datasource.password
 
+        volumeMounts:
+        - mountPath: "/appl"
+          name: spring-storage
+      volumes:
+        - name: spring-storage
+          persistentVolumeClaim:
+            claimName: my-volume3
 
 
 
