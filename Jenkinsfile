@@ -2,11 +2,11 @@ pipeline {
     agent {
   label 'slave'
   }
-        environment {
-       registry = "35.188.180.98:32323/nexus"
-        //DOCKER_IMAGE_NAME = "ahmedfarouk141414/orange"
-        dockerImage = ""
-    }
+      //  environment {
+     //  registry = "35.188.180.98:32323/nexus"
+      //  //DOCKER_IMAGE_NAME = "ahmedfarouk141414/orange"
+     //   dockerImage = ""
+    //}
     
   stages {
       stage('Build') {
@@ -19,28 +19,28 @@ pipeline {
                 //sh  'mvn clean package -X -f Toy0Store/pom.xml '
               }
         }
-    
- 
-    
-
-      stage('Build image') {
-     	 steps{
-      		  script {
-      		    dockerImage = docker.build registry + ":$BUILD_NUMBER"
-      		  }
-      		}
-   	 }
-
-    
-      stage('Push Image') {
-     	 steps{
-      	     script {
-                docker.withRegistry( "" ) {
-                     dockerImage.push()
-          }
-        }
       }
-    }
+  }
+    
+
+    //  stage('Build image') {
+     	// steps{
+      	//	  script {
+      		//    dockerImage = docker.build registry + ":$BUILD_NUMBER"
+      		//  }
+      	//	}
+   	// }
+
+    
+//   stage('Push Image') {
+     //	 steps{
+      	//     script {
+        //        docker.withRegistry( "" ) {
+          //           dockerImage.push()
+      //    }
+     //   }
+    //  }
+   // }
 
 
   //  stage('Build Docker Image') {
