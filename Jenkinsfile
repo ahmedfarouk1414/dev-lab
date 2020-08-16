@@ -46,7 +46,7 @@ pipeline {
   //  stage('Build Docker Image') {
           //    steps {
               //      script {
-                    app = docker.build(DOCKER_IMAGE_NAME)
+               //     app = docker.build(DOCKER_IMAGE_NAME)
           //  }
       //  } 
    //  }
@@ -62,17 +62,18 @@ pipeline {
           //  }
     //    }
       
-       stage('DeployToProduction') {
-               steps {
-                input 'Deploy to Production?'
-                milestone(1)
-                kubernetesDeploy(
-                    kubeconfigId: 'kubeconfig',
-                    configs: 'manifest/spring/deployment.yaml',
-                    enableConfigSubstitution: true
-                )
-            }
-        }
+       //stage('DeployToProduction') {
+       //        steps {
+        
+    //input 'Deploy to Production?'
+      //          milestone(1)
+        //        kubernetesDeploy(
+          //          kubeconfigId: 'kubeconfig',
+           //         configs: 'manifest/spring/deployment.yaml',
+            //        enableConfigSubstitution: true
+            //    )
+          //  }
+       // }
                 
-    }
-   }
+   // }
+  // }
